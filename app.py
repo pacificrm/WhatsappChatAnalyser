@@ -11,7 +11,10 @@ if upload_file is not None:
   df=preprocess.preprocess(data)
   # st.dataframe(df)
   users=df['users'].unique().tolist()
-  users.remove('grp_notification')
+  try:
+    users.remove('grp_notification')
+  except:
+    pass
   users.sort()
   users.insert(0,'Overall')
   selected_user = st.sidebar.selectbox("Show analysis wrt",users)
